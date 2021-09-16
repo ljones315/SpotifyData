@@ -1,5 +1,12 @@
+const dotenv = require('dotenv')
+const path = require('path')
+dotenv.config({path: path.resolve(__dirname, '.env')})
+
 const SpotifyWebApi = require('spotify-web-api-node');
 const express = require('express');
+const fs = require('fs')
+const util = require('util')
+const saveEnv = require('./saveEnv');
 
 const scopes = [
   'ugc-image-upload',
@@ -25,8 +32,8 @@ const scopes = [
 
 const spotifyApi = new SpotifyWebApi({
   redirectUri: 'http://localhost:8888/callback',
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET
+  clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET
 });
 
 const app = express();
@@ -56,8 +63,18 @@ app.get('/callback', (req, res) => {
       spotifyApi.setAccessToken(access_token);
       spotifyApi.setRefreshToken(refresh_token);
 
-      console.log('access_token:', access_token);
-      console.log('refresh_token:', refresh_token);
+      saveEnv({
+        [`ACCESS_TOKEN`]: access_token
+      })
+
+      saveEnv({
+        ['REFRESH_TOKEN']: refresh_token
+      })
+
+      //console.log('access_token:', access_token, '\n');
+      //console.log('refresh_token:', refresh_token);
+
+      console.log('Access Token and Refresh Token have been saved in .env!\n');
 
       console.log(
         `Sucessfully retreived access token. Expires in ${expires_in} s.`
@@ -81,6 +98,6 @@ app.get('/callback', (req, res) => {
 
 app.listen(8888, () =>
   console.log(
-    'HTTP Server up. Now go to http://localhost:8888/login in your browser.'
+    '\nHTTP Server up. Now go to http://localhost:8888/login in your browser.\n'
   )
 );

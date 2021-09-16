@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Spotify Trends</title>
+        <link href="../public/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+      <div class="table">
+        <table>
+          <tr>
+            <th>Rank</th>
+            <th>Title</th>
+          </tr>
+          <% tracks.forEach(function(track) { %>
+            <tr>
+              <td> <%= track.index %> </td>
+              <td> <%= track.name %> </td>
+            </tr>
+          <% }); %>
+        </table>
+      </div>
+    </body> 
