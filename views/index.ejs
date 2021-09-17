@@ -1,61 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Spotify Trends</title>
-        <link href="../public/style.css" rel="stylesheet" type="text/css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    </head>
-    <body>
-      <header class="p-3 bg-dark text-white">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center">
-            <h1>Spotify Trends</h1>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Spotify Trends</title>
+    <link href="../public/style.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="text-center h-100 bg-dark d-flex flex-column">
+    <header class="pt-2 pb-5 bg-dark text-white">
+      <h1>Spotify Trends</h1>
+    </header>
+    <main class="flex-shrink-1">
+      <div class="pt-5 cover d-flex flex-column align-items-center">
+        <h2 class="cover-heading text-white pt-5 pb-5">
+          Get to know yourself...
+        </h2>
+        <div class="p-3 d-flex flex-row">
+          <div class="p-3">
+            <button
+              type="button"
+              onclick="topTracks()"
+              class="btn btn-outline-success btn-lg"
+            >
+              Top Tracks
+            </button>
+          </div>
+          <div class="p-3">
+            <button
+              type="button"
+              onclick="topArtists()"
+              class="btn btn-outline-success btn-lg"
+            >
+              Top Artists
+            </button>
           </div>
         </div>
-      </header>
-      <main>
-        <div class="topTracks bg-dark">
-          <h2 class="text-light bg-dark">Your Top Tracks</h2>
-          <table class="table table-dark table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Title</th>
-                <th scope="col">Artist</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% tracks.forEach(function(track) { %>
-                <tr>
-                  <td> <%= track.index %> </td>
-                  <td> <%= track.name %> </td>
-                  <td> <%= track.artist %> </td>
-                </tr>
-              <% }); %>
-            </tbody>
-          </table>
-        </div>
-        <div class="topArtists bg-dark">
-          <h2 class="text-light bg-dark">Your Top Artists</h2>
-          <table class="table table-dark table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Rank</th>
-                <th scope="col">Artist</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% artists.forEach(function(artist) { %>
-                  <tr>
-                    <td> <%= artist.index %> </td>
-                    <td> <%= artist.name %> </td>
-                  </tr>
-                <% }); %>
-            </tbody>
-          </table>
-        </div>
+      </div>
+      <div
+        class="topTracks bg-dark flex-column"
+        id="topTracks"
+        style="display: none"
+      >
+        <h2 class="text-light bg-dark">Your Top Tracks</h2>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Title</th>
+              <th scope="col">Artist</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% tracks.forEach(function(track) { %>
+            <tr>
+              <td><%= track.index %></td>
+              <td><%= track.name %></td>
+              <td><%= track.artist %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="topArtists bg-dark flex-column"
+        id="topArtists"
+        style="display: none"
+      >
+        <h2 class="text-light bg-dark">Your Top Artists</h2>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Artist</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% artists.forEach(function(artist) { %>
+            <tr>
+              <td><%= artist.index %></td>
+              <td><%= artist.name %></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
     </main>
-    </body> 
+    <footer class="footer mt-auto p-3 bg-dark text-light">
+      <div class="container">
+        <span class="text-muted">Feet eggs</span>
+      </div>
+    </footer>
+    <script>
+      function topTracks() {
+        var tracks = document.getElementById("topTracks");
+        var artists = document.getElementById("topArtists");
+        if (tracks.style.display === "none") {
+          tracks.style.display = "flex";
+          artists.style.display = "none";
+        } else {
+          tracks.style.display = "none";
+        }
+      }
+      function topArtists() {
+        var tracks = document.getElementById("topTracks");
+        var artists = document.getElementById("topArtists");
+        if (artists.style.display === "none") {
+          artists.style.display = "flex";
+          tracks.style.display = "none";
+        } else {
+          artists.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
