@@ -2,21 +2,13 @@ const SpotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const open = require('open');
 
 const spotifyApi = new SpotifyWebApi();
 spotifyApi.setAccessToken(process.env.ACCESS_TOKEN);
 const tracks = [];
 const artists = [];
 
-// spotifyApi.getMyTopTracks({ limit: 50, time_range: 'medium_term' })
-//   .then(function(data) {
-//     let topTracks = data.body.items;
-//     topTracks.forEach(function(track, index) {
-//       console.log((index + 1) + " " + track.name);
-//     })
-//   }, function(err) {
-//     console.log('Something went wrong!', err);
-//   });
 
 
 const app = express();
@@ -56,5 +48,5 @@ spotifyApi.getMyTopTracks({ limit: 50, time_range: 'short_term' })
   });
 
 
-  
+open('http://localhost:3000');
 

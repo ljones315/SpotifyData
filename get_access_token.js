@@ -7,6 +7,7 @@ const express = require('express');
 const fs = require('fs')
 const util = require('util')
 const saveEnv = require('./saveEnv');
+const open = require('open');
 
 const scopes = [
   'ugc-image-upload',
@@ -101,3 +102,5 @@ app.listen(8888, () =>
     '\nHTTP Server up. Now go to http://localhost:8888/login in your browser.\n'
   )
 );
+
+open('http://localhost:8888/login');
