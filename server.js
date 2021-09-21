@@ -1,5 +1,6 @@
 const SpotifyWebApi = require('spotify-web-api-node');
 require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const open = require('open');
@@ -8,8 +9,6 @@ const spotifyApi = new SpotifyWebApi();
 spotifyApi.setAccessToken(process.env.ACCESS_TOKEN);
 const tracks = [];
 const artists = [];
-
-
 
 const app = express();
 const port = 3000;
@@ -41,8 +40,9 @@ spotifyApi.getMyTopTracks({ limit: 50, time_range: 'short_term' })
   .then(function(data) {
     let topArtists = data.body.items;
     topArtists.forEach(function(artist, index) {
-      artists.push({index : index + 1, name : artist.name});
+      artists.push({index : index + 1, name : artist.name, image : artist.images[2].url});
     })
+    console.log(topArtists[0].images[0].url);
   }, function(err) {
     console.log('Something went wrong!', err);
   });

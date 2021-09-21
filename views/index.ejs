@@ -81,6 +81,7 @@
             <tr>
               <th scope="col">Rank</th>
               <th scope="col">Artist</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -88,6 +89,14 @@
             <tr>
               <td><%= artist.index %></td>
               <td><%= artist.name %></td>
+              <td>
+                <img
+                  src="<%= artist.image %>"
+                  alt=""
+                  width="160"
+                  height="160"
+                />
+              </td>
             </tr>
             <% }); %>
           </tbody>
