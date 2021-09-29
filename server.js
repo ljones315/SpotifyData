@@ -45,7 +45,15 @@ spotifyApi.getMyTopTracks({ limit: 50, time_range: 'short_term' })
   .then(function(data) {
     let topArtists = data.body.items;
     topArtists.forEach(function(artist, index) {
-      artists1.push({index : index + 1, name : artist.name, image : artist.images[2].url});
+      if (artist.images[2] != undefined) {
+        artists1.push({index : index + 1, name : artist.name, image : artist.images[2].url});
+      } else if (artist.images[1] != undefined) {
+        artists1.push({index : index + 1, name : artist.name, image : artist.images[1].url});
+      } else if (artist.images[0] != undefined) {
+        artists1.push({index : index + 1, name : artist.name, image : artist.images[0].url});
+      } else {
+        artists1.push({index : index + 1, name : artist.name, image : "public/images/noImageAvailable.jpeg"});
+      }
     })
     console.log(topArtists[0].images[0].url);
   }, function(err) {
@@ -66,9 +74,16 @@ spotifyApi.getMyTopTracks({ limit: 50, time_range: 'short_term' })
   .then(function(data) {
     let topArtists = data.body.items;
     topArtists.forEach(function(artist, index) {
-      artists2.push({index : index + 1, name : artist.name, image : artist.images[2].url});
+      if (artist.images[2] != undefined) {
+        artists2.push({index : index + 1, name : artist.name, image : artist.images[2].url});
+      } else if (artist.images[1] != undefined) {
+        artists2.push({index : index + 1, name : artist.name, image : artist.images[1].url});
+      } else if (artist.images[0] != undefined) {
+        artists2.push({index : index + 1, name : artist.name, image : artist.images[0].url});
+      } else {
+        artists2.push({index : index + 1, name : artist.name, image : "public/images/noImageAvailable.jpeg"});
+      }
     })
-    console.log(topArtists[0].images[0].url);
   }, function(err) {
     console.log('Something went wrong!', err);
   });
@@ -87,7 +102,15 @@ spotifyApi.getMyTopTracks({ limit: 50, time_range: 'short_term' })
   .then(function(data) {
     let topArtists = data.body.items;
     topArtists.forEach(function(artist, index) {
-      artists3.push({index : index + 1, name : artist.name, image : artist.images[2].url});
+      if (artist.images[2] != undefined) {
+        artists3.push({index : index + 1, name : artist.name, image : artist.images[2].url});
+      } else if (artist.images[1] != undefined) {
+        artists3.push({index : index + 1, name : artist.name, image : artist.images[1].url});
+      } else if (artist.images[0] != undefined) {
+        artists3.push({index : index + 1, name : artist.name, image : artist.images[0].url});
+      } else {
+        artists3.push({index : index + 1, name : artist.name, image : "public/images/noImageAvailable.jpeg"});
+      }
     })
     console.log(topArtists[0].images[0].url);
   }, function(err) {
