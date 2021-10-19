@@ -1,0 +1,27 @@
+{
+  "name": "spotifydata",
+  "version": "1.0.0",
+  "description": "Tool to fetch personalized data from Spotify using a Node.js API wrapper.",
+  "main": "get_access_token.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ljones315/SpotifyData.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ljones315/SpotifyData/issues"
+  },
+  "homepage": "https://github.com/ljones315/SpotifyData#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "open": "^8.3.0"
+  }
+}

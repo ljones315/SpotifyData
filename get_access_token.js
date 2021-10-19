@@ -4,8 +4,6 @@ dotenv.config({path: path.resolve(__dirname, '.env')})
 
 const SpotifyWebApi = require('spotify-web-api-node');
 const express = require('express');
-const fs = require('fs')
-const util = require('util')
 const saveEnv = require('./saveEnv');
 const open = require('open');
 
